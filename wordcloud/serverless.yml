@@ -1,0 +1,19 @@
+service: wordcloud
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+
+plugins:
+  - serverless-offline
+
+functions:
+  optimise_word_handler:
+    handler: handler.optimise_word_handler
+    timeout: 30
+    events:
+      - http:
+          method: post
+          path: /optimise_word_handler
